@@ -1,0 +1,66 @@
+{% extends 'index.html'%}
+
+{% block content %}
+<div class="pagetitle">
+    <h1>Información de Transacciones</h1>
+</div>
+
+<section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Edición</h5>
+
+            <form class="row g-3 needs-validation" method="POST" action="/admin/proyecto/update" novalidate>
+                <input type="hidden" value="{{proyecto.idProyecto}}" name="idPr"/>
+                <div class="col-md-6">
+                    <label for="validationCustom02" class="form-label">Nombre del Proyecto</label>
+                    <input type="text" class="form-control" name="nom" required value="{{proyecto.nombre}}">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="validationCustom02" class="form-label">Ubicación</label>
+                    <input type="text" class="form-control" name="ubi" required value="{{proyecto.ubicacion}}">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="validationCustom01" class="form-label">Monto Total de Inversión</label>
+                    <input type="number" step="0.01" min="0" class="form-control" name="monTotalInv" required value="{{proyecto.montoTotalInversion}}">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="validationCustom02" class="form-label">Cantidad de Electricidad Generada Diariamente</label>
+                    <input type="number" step="0.01" min="0" class="form-control" name="cantElec" required value="{{proyecto.cantidadElectricidad}}">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="validationCustom02" class="form-label">Fecha de Inicio</label>
+                    <input type="text" class="form-control" name="fechaI" required value="{{proyecto.fechaInicio}}" readonly>
+                </div>
+                
+                <div class="col-md-6">
+                    <label for="validationCustom02" class="form-label">Fecha de Finalización</label>
+                    <input type="text" class="form-control" name="fechaF" required value="{{proyecto.fechaFin}}">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="validationCustom04" class="form-label">Número de Inversionista</label><br>
+                    <input type="number" min="1" name="idInv" class="form-control" required value="{{proyecto.idInversionista}}">
+                </div>
+                
+                <div class="col-6">
+                    <a href="/admin/proyecto/all" class="btn btn-danger rounded-pill">Cancelar</a>
+                </div> 
+
+                <div class="col-6">
+                    <button class="btn btn-success rounded-pill" type="submit">Guardar</button>
+                </div>           
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+{% endblock %}
